@@ -8,10 +8,7 @@ module Dart
 
       def self.call(template)
         debugger
-        puts "*** TemplateHandler: #{template}"
         compiled_source = erb_handler.call(template)
-        #DartJs.compile(compiled_source)
-        "alert('hello, world!');"
       end
     end
   end

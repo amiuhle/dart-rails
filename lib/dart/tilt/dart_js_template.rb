@@ -3,20 +3,15 @@ require 'fileutils'
 
 module Dart
   module Tilt
-    # CoffeeScript template implementation. See:
-    # http://coffeescript.org/
-    #
-    # CoffeeScript templates do not support object scopes, locals, or yield.
     class DartJsTemplate < ::Tilt::Template
-      self.default_mime_type = 'application/javascript'
+      self.default_mime_type = 'application/dart'
 
       def self.engine_initialized?
         defined? ::DartJs
       end
 
       def initialize_engine
-        puts "def initialize_engine"
-        puts(require_template_library('dart-js'))
+        require_template_library('dart-js')
       end
 
       def prepare
