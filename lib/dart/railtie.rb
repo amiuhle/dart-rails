@@ -1,6 +1,6 @@
 require 'rails'
 require 'rails/railtie'
-require 'dart-js'
+require 'dart_js'
 require 'sprockets'
 require 'dart/tilt/dart_js_template'
 require 'dart/tilt/dart2js_template'

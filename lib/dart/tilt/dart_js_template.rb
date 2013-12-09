@@ -21,11 +21,9 @@ module Dart
       end
 
       def evaluate(scope, locals, &block)
-        if @file
-          @output ||= DartJs.compile(File.new(@file), options)
-        else
-          @output ||= DartJs.compile(data, options)
-        end
+        transcoder = DartJs.new((@file ? File.new(@file) : data), options)
+        transcoder.compile
+        @output ||= transcoder.get_js_content
       end
     end
   end
