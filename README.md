@@ -1,25 +1,34 @@
 # DartRails
 
-## Installation:
+### Idea
 
-Gemfile
+Handle [Dart](https://www.dartlang.org/ 'dartlang.org') scripts so they get transcoded to js for browsers
+without dart support. Currently there's only the `Dartium` Browser from the development-kit that supports
+dart directly.
+
+For now this is a rather stupid attempt, although it works.
+
+### Setup
+
+`Gemfile`
 
     gem 'ruby-dart', :git => 'https://github.com/m0gg/ruby-dart_js.git'
     gem 'dart-rails', :git => 'https://github.com/m0gg/dart-rails.git'
 
-Currently you still need to add following to the bottom of your body in the layout
+Currently you still need to add following to the bottom of your body in the layout:
 
-layout.html.erb
+`layout.html.erb`
 
     <%= dart_include_tag 'application' %>
     <%= javascript_include_tag 'dart' %>
 
 `dart_include_tag` adds the dart asset.
 
-## Compatibility
+### Compatibility
 
 ###### ruby-dart_js
-Needed use the dart2js transcoder for compatibility.
+
+This gem is needed for the `dart2js` transcoder compatibility.
 
 See [ruby-dart_js on github](https://github.com/m0gg/ruby-dart_js "ruby-dart_js home") for setup.
 
@@ -36,7 +45,7 @@ would get
 
     <script type="application/javascript" src="/assets/application.js"></script>
 
-To provide the transcoded version of you dart-file you'll need a `application.js.dart2js` which could look
+To provide the transcoded version of you dart-file you'll need a `application.js.dart2js` template/directive which could look
 like this
 
     //= include application
