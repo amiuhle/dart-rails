@@ -3,5 +3,7 @@
 // created the <%= file_name %>.js.dart2js template and //= include <%= file_name %>
 // You can use Dart in this file: http://dartlang.org/
 
+import ''
+
 void main() {
 }
