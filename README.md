@@ -3,7 +3,7 @@
 ### Idea
 
 Handle [Dart](https://www.dartlang.org/ 'dartlang.org') scripts so they get transcoded to js for browsers
-without dart support. Currently there's only the `Dartium` Browser from the development-kit that supports
+without dart support. Currently there's only the `Dartium` browser from the development-kit that supports
 dart directly.
 
 For now this is a rather stupid attempt, although it works.
