@@ -22,8 +22,11 @@ module Dart
 
       def evaluate(scope, locals, &block)
         transcoder = DartJs.new((@file ? File.new(@file) : data), options)
-        transcoder.compile
-        @output ||= transcoder.get_js_content
+        if transcoder.compile
+          @output ||= transcoder.get_js_content
+        else
+          throw 'dart2js compiler failed!'
+        end
       end
     end
   end
