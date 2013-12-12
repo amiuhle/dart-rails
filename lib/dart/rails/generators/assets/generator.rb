@@ -1,3 +1,5 @@
+require 'rails/generators'
+
 module Dart
   module Generators
     class AssetsGenerator < ::Rails::Generators::Base
