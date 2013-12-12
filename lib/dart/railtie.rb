@@ -8,6 +8,7 @@ require 'dart/rails/engine'
 require 'dart/rails/template_handler'
 require 'dart/rails/version'
 require 'dart/rails/helper'
+require 'dart/rails/generators/assets/generator'
 
 module Dart
   class Railtie < ::Rails::Railtie
