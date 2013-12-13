@@ -1,0 +1,6 @@
+name: <%=  %>
+description:
+dependencies:
+  rails_ujs:
+    git:
+      url: https://github.com/m0gg/dart-rails_ujs.git

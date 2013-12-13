@@ -1,5 +1,1 @@
-require 'dart-js'
-require 'dart/tilt/dart_js_template'
-require 'dart/rails/engine'
-require 'dart/rails/template_handler'
-require 'dart/rails/version'
+require 'dart/railtie'

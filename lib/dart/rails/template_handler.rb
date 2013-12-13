@@ -1,5 +1,7 @@
 module Dart
   module Rails
+
+    # TemplateHandler for dart scripts
     class TemplateHandler
       def self.erb_handler
         debugger
@@ -8,15 +10,13 @@ module Dart
 
       def self.call(template)
         debugger
-        puts "*** TemplateHandler: #{template}"
-        compiled_source = erb_handler.call(template)
-        #DartJs.compile(compiled_source)
-        "alert('hello, world!');"
+        erb_handler.call(template)
       end
     end
   end
 end
 
+# Finally register TemplateHandler in ActionView
 ActiveSupport.on_load(:action_view) do
   ActionView::Template.register_template_handler :dart, Dart::Rails::TemplateHandler
 end

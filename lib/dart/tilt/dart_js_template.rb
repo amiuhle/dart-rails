@@ -3,33 +3,42 @@ require 'fileutils'
 
 module Dart
   module Tilt
-    # CoffeeScript template implementation. See:
-    # http://coffeescript.org/
-    #
-    # CoffeeScript templates do not support object scopes, locals, or yield.
-    class DartJsTemplate < ::Tilt::Template
-      self.default_mime_type = 'application/javascript'
 
+    # Tile-tmplate for processing dart files
+    # provides js-code from dart2js
+    class DartJsTemplate < ::Tilt::Template
+
+      # TODO: is this needed?
+      self.default_mime_type = 'application/dart'
+
+      # checks for required DartJs class
       def self.engine_initialized?
         defined? ::DartJs
       end
 
+      # requires DartJs from ruby-dart_js
+      # TODO: is this needed?
       def initialize_engine
-        puts "def initialize_engine"
-        puts(require_template_library('dart-js'))
+        require_template_library('dart_js')
       end
 
+      # Setup path to applications tmp directory
+      # TODO: super-method not called, required?
       def prepare
         tmp_path = ::Rails.root.join('tmp', 'dart').to_s
         FileUtils.mkdir_p tmp_path
         options[:tmp_path] ||= tmp_path
       end
 
+      # Returns transcoded dart template
+      # TODO: respect paramters, if thats relevant
       def evaluate(scope, locals, &block)
-        if @file
-          @output ||= DartJs.compile(File.new(@file), options)
+        transcoder = DartJs.new((@file ? File.new(@file) : data), options)
+        if transcoder.compile
+          @output ||= transcoder.get_js_content
         else
-          @output ||= DartJs.compile(data, options)
+          # TODO: make it an error someone can work with
+          throw 'dart2js compiler failed!'
         end
       end
     end
